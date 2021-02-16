@@ -5,7 +5,7 @@ The enemy will be always chasing you with various speeds , which depends on the 
 # The Mob class
 The mob class is responsible for all actions taken by the enemy. It controls the path on which the enemy moves using a pathfinding algorithm.
 The enemy will create an imaginary graph at every frame in which it lies on the origin and the user in its respective position. From there it first finds the user's quadrant
-and then the chanses the user with its full potential. A quick preview of the game and the enemy's movement is shown below.
+and then the chases the user with its full potential. A quick preview of the game and the enemy's movement is shown below.
 
 # A Sneak Peak
 ![Here is a quick preview](https://i.imgur.com/5daFvPN.gif)
