@@ -4,6 +4,7 @@
 #include<chrono>
 #include<thread>
 #include"libs/mob.h"
+#include"libs/shooter.h"
 using namespace std;
 
 class Game : public KillerPiller{
@@ -20,6 +21,7 @@ class Game : public KillerPiller{
             generateMap();
         }
     }
+    Gun blaster;
     int mobSpeed;
     int a[2] = {9 , 5};
     string direction = "f";
@@ -28,9 +30,10 @@ class Game : public KillerPiller{
     int alternate = 0;
     int asteroids[3] = {-1 , -1 , 0};
     int boostCounter = 0;
-    int boostSpeed = 0;
     int realSpeed;
     int starPrint = 0;
+    bool gunEnable = false;
+    bool fired = false;
     bool restart = false;
     void lostScreen(){
         string input;
@@ -50,6 +53,7 @@ class Game : public KillerPiller{
         }
     }
     void generateMap(){
+    	bool shotUsed = false;
         char ORANGE_NO_FLASH[] = "\033[1;33m";
         char RED_NO_FLASH[] = "\033[1;31m";
         char NC[] = "\033[0m";
@@ -68,8 +72,8 @@ class Game : public KillerPiller{
                 asteroids[1] = -1;
                 if(asteroids[2] == 3){
                     asteroids[2] = 0;
-                    boostSpeed += 1;
-                    boostCounter = 20;
+                    boostCounter = 10;
+                    gunEnable = true;
                 }
                 score += 1;
             }
@@ -103,6 +107,12 @@ class Game : public KillerPiller{
                         else if(i == coords[0] && j == coords[1]){
                             cout<<"*";
                         }
+                        else if(blaster.shootable(j , i , a[1] , a[0] , coords[1] , coords[0] , direction)){
+                        	if(boostCounter > 0 && fired){
+                        		cout<<"+";
+                        		shotUsed = true;
+                        	}
+						}
                         else{
                             if(starPrint == 0){
                                 cout<<GREEN_NO_FLASH<<"."<<NC;
@@ -154,20 +164,22 @@ class Game : public KillerPiller{
                 pathfinder();
                 alternate = 1;
             }
-            if(boostCounter > 0){
-                realSpeed = boostSpeed;
-                boostCounter -= 1;
-            }
-            else{
-                realSpeed = mobSpeed;
-            }
-
+            realSpeed = mobSpeed;
             if(alternate < realSpeed + 1)
             alternate += 1;
             else
             alternate = 0;
             userCoords[0] = a[0];
             userCoords[1] = a[1];
+            if(shotUsed){
+            	boostCounter -= 1;
+            	shotUsed = false;
+            	fired = false;
+			}
+			if(boostCounter <= 0){
+				gunEnable = false;
+				boostCounter = 0;
+			}
             std::this_thread::sleep_for(std::chrono::milliseconds(16));
             updatePosition(getKeyPress());
             system("clear");
@@ -220,6 +232,11 @@ class Game : public KillerPiller{
             case 'o':
                 showScore = true;
                 break;
+            case 'e':
+            	if(gunEnable){
+            		fired = true;
+            	}
+            	break;
             default:
                 break;
         }
