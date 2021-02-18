@@ -11,15 +11,13 @@ const int defaultAsteroids[3] = {-1, -1, 3};
 
 class Game: public KillerPiller {
   public:
-    //Speed is for the speed of the mob as compared to the user.
-    Game(int speed) {
-      mobSpeed = speed;
+    Game() {
+      mobSpeed = 2;
       this->start();
     }
 
   private:
     Gun blaster; // Declaring the blaster/Gun from shooter.h
-    int mobSpeed; //speed of the mob relative to the user.
 
     string direction = "f"; // Tells the direction of the user. f == forward , b == backward , l == left , r == right. (Lowercase is important)
     bool showScore = false;// Tell if the score should be displayed or not.
@@ -48,11 +46,11 @@ class Game: public KillerPiller {
 
     Game start() {
       this->reset();
-      // this->generateMap();
+
       gameRunning = true;
       gettimeofday(&lastFrameEndTime, NULL);
-      this->eventLoop();
 
+      this->eventLoop();
       return *this;
     }
 

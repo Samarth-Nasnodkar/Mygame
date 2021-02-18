@@ -24,6 +24,6 @@ int main() {
   choice = max(1, min(choice, 4));
 
   system("clear");
-  Game g(speed);
+  Game g;
   return 0;
 }

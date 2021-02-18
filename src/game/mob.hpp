@@ -79,7 +79,7 @@ class KillerPiller {
         playerCoords[1] < mobCoords[1]
       ) {
         // User is 2nd Quadrant taking mob at origin.
-        int yDiff , xDiff;
+        int yDiff, xDiff;
 
         yDiff = mobCoords[0] - playerCoords[0];
         xDiff = mobCoords[1] - playerCoords[1];
