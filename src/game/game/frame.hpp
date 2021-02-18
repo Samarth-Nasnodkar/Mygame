@@ -1,6 +1,9 @@
 Game Game::frame() {
+  updatePosition(getKeyPress());
   system("clear");
+
   bool shotUsed = false;
+
   if(a[0] > 22) a[0] = 0;
   else if(a[1] > 79) a[1] = 0;
   else if(a[0] < 0) a[0] = 22;
@@ -126,8 +129,6 @@ Game Game::frame() {
     gunEnable = false;
     boostCounter = 0;
   }
-
-  updatePosition(getKeyPress());
 
   return *this;
 }
