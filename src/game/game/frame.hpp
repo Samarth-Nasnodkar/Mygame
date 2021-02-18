@@ -38,7 +38,8 @@ Game Game::frame() {
     // Draw frame
     for(int i = 0; i < dimensions[0]; i++) {
       for(int j = 0; j < dimensions[1]; j++) {
-        if(i == floor(playerCoords[0]) && j == floor(playerCoords[1])) {
+        if (i == 0 || i == dimensions[0] - 1 || j == 0 || j == dimensions[1] - 1) cout << BG_WHITE << " " << NC;
+        else if(i == floor(playerCoords[0]) && j == floor(playerCoords[1])) {
           // Printing the user character.
 
           if(direction == 'f') cout << ORANGE_NO_FLASH << "^" << NC;
@@ -77,8 +78,7 @@ Game Game::frame() {
 
         }
         else {
-          if (i == 0 || i == dimensions[0] - 1 || j == 0 || j == dimensions[1] - 1) cout << BG_WHITE << " " << NC;
-          else cout << " ";
+          cout << " ";
 
           // // Printing the stars alternately.
 
