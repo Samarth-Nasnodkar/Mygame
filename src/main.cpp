@@ -4,6 +4,7 @@
 #include "./game/game/reset.hpp"
 #include "./game/game/asteroid-spawner.hpp"
 #include "./game/game/update-position.hpp"
+#include "./game/game/event-loop.hpp"
 
 using namespace std;
 

@@ -8,5 +8,7 @@ Game Game::reset() {
   asteroids[1] = defaultAsteroids[1];
   asteroids[2] = defaultAsteroids[2];
 
+  gameRunning = false;
+
   return *this;
 }

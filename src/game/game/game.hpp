@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <string>
-#include <chrono>
+#include <sys/time.h>
 #include <thread>
 #include "../mob.hpp"
 #include "../shooter.hpp"
@@ -41,9 +41,19 @@ class Game: public KillerPiller {
     bool gunEnable = false; // Tells if the gun is enabled or not.
     bool fired = false; // If the user has fired a bullet or not.
 
+    const int tps = 10;
+    const int fps = 30;
+    timeval lastFrameEndTime;
+
+    bool gameRunning = false;
+    float gameTick = 0;
+
     Game start() {
       this->reset();
-      this->generateMap();
+      // this->generateMap();
+      gameRunning = true;
+      gettimeofday(&lastFrameEndTime, NULL);
+      this->eventLoop();
 
       return *this;
     }
@@ -52,6 +62,7 @@ class Game: public KillerPiller {
     Game reset();
     Game asteroidSpawner();
     Game updatePosition(char input);
+    Game eventLoop();
 
     void generateMap() {
       // Generates the map in each frame.
