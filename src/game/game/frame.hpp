@@ -4,8 +4,11 @@ Game Game::frame() {
 
   bool shotUsed = false;
 
-  playerCoords[0] = fmin(dimensions[0] - 1, fmax(0, playerCoords[0])); // Bounded
-  playerCoords[1] = fmin(dimensions[1] - 1, fmax(0, playerCoords[1])); // Bounded
+  playerCoords[0] = fmin(dimensions[0] - 2, fmax(1, playerCoords[0])); // Bounded
+  playerCoords[1] = fmin(dimensions[1] - 2, fmax(1, playerCoords[1])); // Bounded
+
+  mobCoords[0] = fmin(dimensions[0] - 2, fmax(1, mobCoords[0])); // Bounded
+  mobCoords[1] = fmin(dimensions[1] - 2, fmax(1, mobCoords[1])); // Bounded
 
   if(
     floor(playerCoords[0]) == asteroids[0] &&
