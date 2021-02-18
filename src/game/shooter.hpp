@@ -60,5 +60,6 @@ class Gun {
           else return false;
         }
       }
+      return false;
     }
 };

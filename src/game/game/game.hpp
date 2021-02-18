@@ -42,7 +42,7 @@ class Game: public KillerPiller {
     bool fired = false; // If the user has fired a bullet or not.
 
     const int tps = 10;
-    const int fps = 300;
+    const int fps = 10;
     timeval lastFrameEndTime;
 
     bool gameRunning = false;
@@ -62,6 +62,7 @@ class Game: public KillerPiller {
     Game reset();
     Game asteroidSpawner();
     Game updatePosition(char input);
+    Game frame();
     Game eventLoop();
 
     void generateMap() {

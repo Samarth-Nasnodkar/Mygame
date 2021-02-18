@@ -3,7 +3,7 @@ Game Game::lostScreen() {
   char input;
   system("clear");
 
-  cout << ORANGE_FLASH << "GAME OVER" << NC << endl;
+  cout << RED_FLASH << "GAME OVER" << NC << endl;
   cout << "Score: \n"<< ORANGE_NO_FLASH << score << NC << endl;
 
   cout << GREEN_NO_UNDER << "\n\nWould You like to continue?[y/N]: ";

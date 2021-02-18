@@ -5,6 +5,7 @@
 #include "./game/game/asteroid-spawner.hpp"
 #include "./game/game/update-position.hpp"
 #include "./game/game/event-loop.hpp"
+#include "./game/game/frame.hpp"
 
 using namespace std;
 
@@ -24,6 +25,5 @@ int main() {
 
   system("clear");
   Game g(speed);
-
   return 0;
 }
