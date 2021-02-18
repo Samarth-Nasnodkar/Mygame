@@ -2,17 +2,22 @@
 #include <string>
 #include <sys/time.h>
 #include <thread>
+#include <sys/ioctl.h>
+#include <unistd.h>
 #include "../mob.hpp"
 #include "../shooter.hpp"
 #include "../../libs/COLORS!.hpp"
 #include "../../util/input.hpp"
 
 const int defaultAsteroids[3] = {-1, -1, 3};
-const int defaultDimensions[2] = {23, 80};
+int defaultDimensions[2] = {23, 80};
 
 class Game: public KillerPiller {
   public:
     Game() {
+      this->fetchResolution();
+      dimensions[0] = defaultDimensions[0];
+      dimensions[1] = defaultDimensions[1];
       mobSpeed = 2;
       this->start();
     }
@@ -33,7 +38,7 @@ class Game: public KillerPiller {
     }; //Represents the asteroid, 0th element -> y coordinate , 1st element -> x coordinate , 2nd element -> the powerup  Value.
     // If power up value is 3, the gun gets equipped to the user.
 
-    int dimensions[2] = {defaultDimensions[0], defaultDimensions[1]}; // Map dimensions
+    int dimensions[2]; // Map dimensions
 
     int boostCounter = 0;// The user gets 10 shots using the gun, these shots fired are counted using this var.
     int starPrint = 0; // The stars should be printed after a regular interval. Thi variable moves between 0 and 5 and prints the star if equal to 0
@@ -65,4 +70,5 @@ class Game: public KillerPiller {
     Game frame();
     Game eventLoop();
     Game pausePlay();
+    Game fetchResolution();
 };

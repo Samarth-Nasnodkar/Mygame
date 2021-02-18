@@ -7,6 +7,7 @@
 #include "./game/game/event-loop.hpp"
 #include "./game/game/frame.hpp"
 #include "./game/game/game-pause.hpp"
+#include "./game/game/game-resolution.hpp"
 
 using namespace std;
 
