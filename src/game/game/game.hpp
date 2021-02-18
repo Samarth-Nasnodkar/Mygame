@@ -42,7 +42,7 @@ class Game: public KillerPiller {
     bool fired = false; // If the user has fired a bullet or not.
 
     const int tps = 10;
-    const int fps = 10;
+    const int fps = 60;
     timeval lastFrameEndTime;
 
     bool gameRunning = false;
