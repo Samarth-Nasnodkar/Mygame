@@ -1,4 +1,4 @@
-Game::asteroidSpawner() {
+Game Game::asteroidSpawner() {
     // Spawns the asteroid if not present.
     srand(time(0));
 

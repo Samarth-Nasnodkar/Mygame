@@ -1,4 +1,4 @@
-Game::reset() {
+Game Game::reset() {
   KillerPiller::reset();
 
   a[0] = defaultA[0];

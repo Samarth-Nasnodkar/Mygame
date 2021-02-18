@@ -1,4 +1,4 @@
-Game::updatePosition(char input) {
+Game Game::updatePosition(char input) {
   switch(input) {
     // Normal movements.
 
@@ -27,3 +27,6 @@ Game::updatePosition(char input) {
     default:
       break;
   }
+
+  return *this;
+}

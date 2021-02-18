@@ -1,4 +1,4 @@
-Game::lostScreen() {
+Game Game::lostScreen() {
   // This screen is showed when the user loses.
   char input;
   system("clear");
