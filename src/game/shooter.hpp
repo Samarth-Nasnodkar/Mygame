@@ -7,7 +7,7 @@ class Gun {
     /**
     * Tells if at that specific point, the gun shot animation should be showed or not.
     */
-    bool shootable (
+    bool shootable(
       int currentx,
       int currenty,
       int userx,
