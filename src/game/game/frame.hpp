@@ -49,8 +49,8 @@ Game Game::frame() {
         ) {
           // Printing the asteroid.
 
-          if(asteroids[2] == 0) cout << RED_NO_FLASH << "#" <<NC;
-          else cout << RED_NO_FLASH << "@" << NC;
+          if(asteroids[2] == 0) cout << GREEN_NO_UNDER << "#" <<NC;
+          else cout << GREEN_NO_UNDER << "@" << NC;
         }
         else if(i == floor(mobCoords[0]) && j == floor(mobCoords[1])) cout << "*";
         else if(
@@ -69,12 +69,13 @@ Game Game::frame() {
           fired
         ) {
           //The shooting animation.
-          cout << "+";
+          cout << RED_NO_UNDER << "+";
           shotUsed = true;
 
         }
         else {
-          cout << " ";
+          if (i == 0 || i == dimensions[0] - 1 || j == 0 || j == dimensions[1] - 1) cout << BG_WHITE << " " << NC;
+          else cout << " ";
 
           // // Printing the stars alternately.
 
@@ -97,7 +98,10 @@ Game Game::frame() {
 
     // HUD
     cout << "Score: " << ORANGE_UNDER << score << NC << endl;
-    cout << "Boost Level: " << ORANGE_UNDER << boostCounter << NC << endl;
+    cout << "Boost Level: [";
+    for (int i = 0; i < boostCounter; i++) cout << GREEN_NO_UNDER << "#" << NC;
+    for (int i = 0; i < 10 - boostCounter; i++) cout << " ";
+    cout << "]" << endl;
   }
 
   if(alternate == 0) {

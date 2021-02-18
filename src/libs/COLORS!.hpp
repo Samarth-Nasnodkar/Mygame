@@ -13,4 +13,6 @@ char RED_FLASH[] = "\033[1;31;5m"; // Flashing red text
 char RED_UNDER[] = "\033[1;31;4m"; // Underlined Red Text
 char RED_NO_UNDER[] = "\033[1;31m"; // Non-Underlined Red Text
 
+char BG_WHITE[] = "\033[47;30;1m"; //White background
+
 char NC[] = "\033[0m"; // NO COLOR. Resets Text Color
