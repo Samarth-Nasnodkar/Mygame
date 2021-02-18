@@ -8,7 +8,7 @@
 #include "../../util/input.hpp"
 
 const int defaultAsteroids[3] = {-1, -1, 3};
-const int defaultDimensions[2] = {25, 75};
+const int defaultDimensions[2] = {23, 80};
 
 class Game: public KillerPiller {
   public:

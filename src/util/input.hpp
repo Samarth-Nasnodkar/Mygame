@@ -6,5 +6,5 @@ char getKeyPress() {
     a = getch(); // The key the user hit.
     return a;
   }
-  else return 'e';
+  else return 'z';
 }

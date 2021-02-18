@@ -25,8 +25,12 @@ class Gun {
           if(currenty < usery && currentx == userx) return true;
           else return false;
         }
-        else{
+        else if(enemyx == userx){
           if(currenty < usery && currenty > enemyy && currentx == userx) return true;
+          else return false;
+        }
+        else{
+          if(currentx == userx && currenty < usery) return true;
           else return false;
         }
       }
@@ -35,8 +39,12 @@ class Gun {
           if(currenty > usery && currentx == userx) return true;
           else return false;
         }
-        else {
+        else if(enemyx == userx){
           if(currenty > usery && currenty < enemyy && currentx == userx) return true;
+          else return false;
+        }
+        else{
+          if(currentx == userx && currenty > usery) return true;
           else return false;
         }
       }
@@ -45,8 +53,12 @@ class Gun {
           if(currentx < userx && currenty == usery) return true;
           else return false;
         }
-        else{
+        else if(enemyy == usery){
           if(currentx < userx && currentx > enemyx && currenty == usery) return true;
+          else return false;
+        }
+        else{
+          if(currentx < userx && currenty == usery) return true;
           else return false;
         }
       }
@@ -55,8 +67,12 @@ class Gun {
           if(currentx > userx && currenty == usery) return true;
           else return false;
         }
-        else{
+        else if(enemyy == usery){
           if(currentx > userx && currentx < enemyx && currenty == usery) return true;
+          else return false;
+        }
+        else{
+          if(currentx > userx && currenty == usery) return true;
           else return false;
         }
       }
