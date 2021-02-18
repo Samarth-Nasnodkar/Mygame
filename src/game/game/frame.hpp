@@ -4,8 +4,8 @@ Game Game::frame() {
 
   bool shotUsed = false;
 
-  playerCoords[0] = fmin(22, fmax(0, playerCoords[0])); // Bounded
-  playerCoords[1] = fmin(78, fmax(0, playerCoords[1])); // Bounded
+  playerCoords[0] = fmin(dimensions[0] - 1, fmax(0, playerCoords[0])); // Bounded
+  playerCoords[1] = fmin(dimensions[1] - 1, fmax(0, playerCoords[1])); // Bounded
 
   if(
     floor(playerCoords[0]) == asteroids[0] &&
@@ -33,8 +33,8 @@ Game Game::frame() {
     this->asteroidSpawner(); // Spawns asteroid if not present in the map.
 
     // Draw frame
-    for(int i = 0; i < 23; i++) {
-      for(int j = 0; j < 80; j++) {
+    for(int i = 0; i < dimensions[0]; i++) {
+      for(int j = 0; j < dimensions[1]; j++) {
         if(i == floor(playerCoords[0]) && j == floor(playerCoords[1])) {
           // Printing the user character.
 
