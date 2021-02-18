@@ -13,6 +13,7 @@ and then the chases the user with its full potential. A quick preview of the gam
 # Commands
 The commands are simple and intuitive:  
   W/A/S/D to move Up/Left/Down/Right respectively.  
+  P to Pause/Play the game  
   And  
   O to check your score.
   
