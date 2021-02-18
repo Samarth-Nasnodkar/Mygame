@@ -94,34 +94,10 @@ Game Game::frame() {
       }
       cout << "\n";
     }
-  }
-  else {
-    // To display the score.
-    for(int i = 0; i < 40; i++) {
-      for(int j = 0; j < 40; j++) {
-        if(i == 19 && j == 17) {
-          cout << "\033[1;33m" << "Your" << "\033[0m";
-          j += 3;// Not needed but just felt like keeping the boundaries still.
-        }
-        else if(i == 20 && j == 16) {
-          cout<<"\033[1;33m"<<"Score:"<<"\033[0m";
-          j += 5;
-        }
-        else if(i == 21 && j == 17) {
-          int temp = score;
-          int digits = 0;
-          while(temp > 0) {
-            digits += 1;
-            temp = temp/10;
-          }
-          cout << "\033[0;32m" << score << "\033[0m";
-          j += digits - 1;
-        }
-        else cout<<" ";
-      }
-      cout<<"\n";
-    }
-    showScore = false;
+
+    // HUD
+    cout << "Score: " << ORANGE_UNDER << score << NC << endl;
+    cout << "Boost Level: " << ORANGE_UNDER << boostCounter << NC << endl;
   }
 
   if(alternate == 0) {

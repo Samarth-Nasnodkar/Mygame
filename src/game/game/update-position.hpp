@@ -26,9 +26,6 @@ Game Game::updatePosition(char input) {
         direction = 'l';
       }
       break;
-    case 'o':
-      if(!paused) showScore = true;
-      break;
     case 'e':
       if(gunEnable && !paused) fired = true;
       break;
