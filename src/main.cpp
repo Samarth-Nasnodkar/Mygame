@@ -1,5 +1,9 @@
 #include <math.h>
-#include "./game/game.hpp"
+#include "./game/game/game.hpp"
+#include "./game/game/lost-screen.hpp"
+#include "./game/game/reset.hpp"
+#include "./game/game/asteroid-spawner.hpp"
+#include "./game/game/update-position.hpp"
 
 using namespace std;
 
