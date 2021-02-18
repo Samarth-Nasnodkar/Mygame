@@ -8,8 +8,8 @@ Game Game::frame() {
   playerCoords[1] = fmin(78, fmax(0, playerCoords[1])); // Bounded
 
   if(
-    playerCoords[0] == asteroids[0] &&
-    playerCoords[1] == asteroids[1]
+    floor(playerCoords[0]) == asteroids[0] &&
+    floor(playerCoords[1]) == asteroids[1]
   ) {
     asteroids[0] = -1;// the -1 signifies that the asteroid should be despawned.
     asteroids[1] = -1;
