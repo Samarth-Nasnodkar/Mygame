@@ -3,19 +3,19 @@ Game Game::updatePosition(char input) {
     // Normal movements.
 
     case 'w':
-      a[0] -= 1;
+      playerCoords[0] -= playerSpeed * gameTickDelta;
       direction = "f";
       break;
     case 's':
-      a[0] += 1;
+      playerCoords[0] += playerSpeed * gameTickDelta;
       direction = "b";
       break;
     case 'd':
-      a[1] += 1;
+      playerCoords[1] += playerSpeed * gameTickDelta;
       direction = "r";
       break;
     case 'a':
-      a[1] -= 1;
+      playerCoords[1] -= playerSpeed * gameTickDelta;
       direction = "l";
       break;
     case 'o':

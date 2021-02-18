@@ -19,67 +19,83 @@ This is a visual representation of the imaginary graph plotted by the mob
 
 */
 
-const int defaultCoords[2] = {10, 20};
-const int defaultUserCoords[2] = {9, 5};
+const float defaultCoords[2] = {10, 20};
+const float defaultplayerCoords[2] = {9, 5};
+const float defaultPlayerSpeed = 5; // in units per tick
+const float defaultMobSpeed = 3.5;
 
-class KillerPiller{
+class KillerPiller {
   // 0th element represents the y coordinate of the mob/user and 1st element is the x coordinate
   protected:
     // coords represents the coordinates of the mob.
-    int coords[2] = {defaultCoords[0], defaultCoords[1]};
-    int userCoords[2] = {defaultUserCoords[0], defaultUserCoords[1]};
+    float mobCoords[2] = {defaultCoords[0], defaultCoords[1]};
+    float playerCoords[2] = {defaultplayerCoords[0], defaultplayerCoords[1]};
+    float mobSpeed = defaultMobSpeed;
+    float playerSpeed = defaultPlayerSpeed;
     // userCoords represents the coordinates of the user.
 
-    KillerPiller pathfinder() {
-      if(userCoords[0] > coords[0] && userCoords[1] > coords[1]) {
+    KillerPiller mobPathFind(float tick) {
+      if(
+        playerCoords[0] > mobCoords[0] &&
+        playerCoords[1] > mobCoords[1]
+      ) {
         // User is 4th Quadrant taking mob at origin.
         int yDiff, xDiff;
 
-        yDiff = userCoords[0] - coords[0];
-        xDiff = userCoords[1] - coords[1];
+        yDiff = playerCoords[0] - mobCoords[0];
+        xDiff = playerCoords[1] - mobCoords[1];
 
-        coords[0] += 1;
-        coords[1] += 1;
+        mobCoords[0] += mobSpeed * tick;
+        mobCoords[1] += mobSpeed * tick;
       }
-      else if(userCoords[0] > coords[0] && userCoords[1] < coords[1]) {
+      else if(
+        playerCoords[0] > mobCoords[0] &&
+        playerCoords[1] < mobCoords[1]
+      ) {
         // User is 3rd Quadrant taking mob at origin.
         int yDiff, xDiff;
 
-        yDiff = userCoords[0] - coords[0];
-        xDiff = coords[1] - userCoords[1];
+        yDiff = playerCoords[0] - mobCoords[0];
+        xDiff = mobCoords[1] - playerCoords[1];
 
-        coords[0] += 1;
-        coords[1] -= 1;
+        mobCoords[0] += mobSpeed * tick;
+        mobCoords[1] -= mobSpeed * tick;
       }
-      else if(userCoords[0] < coords[0] && userCoords[1] > coords[1]) {
+      else if(
+        playerCoords[0] < mobCoords[0] &&
+        playerCoords[1] > mobCoords[1]
+      ) {
         // User is 1st Quadrant taking mob at origin.
         int yDiff , xDiff;
 
-        yDiff = coords[0] - userCoords[0];
-        xDiff = userCoords[1] - coords[1];
+        yDiff = mobCoords[0] - playerCoords[0];
+        xDiff = playerCoords[1] - mobCoords[1];
 
-        coords[0] -= 1;
-        coords[1] += 1;
+        mobCoords[0] -= mobSpeed * tick;
+        mobCoords[1] += mobSpeed * tick;
       }
-      else if(userCoords[0] < coords[0] && userCoords[1] < coords[1]){
+      else if(
+        playerCoords[0] < mobCoords[0] &&
+        playerCoords[1] < mobCoords[1]
+      ) {
         // User is 2nd Quadrant taking mob at origin.
         int yDiff , xDiff;
 
-        yDiff = coords[0] - userCoords[0];
-        xDiff = coords[1] - userCoords[1];
+        yDiff = mobCoords[0] - playerCoords[0];
+        xDiff = mobCoords[1] - playerCoords[1];
 
-        coords[0] -= 1;
-        coords[1] -= 1;
+        mobCoords[0] -= mobSpeed * tick;
+        mobCoords[1] -= mobSpeed * tick;
       }
-      else if(userCoords[0] == coords[0]){
+      else if(playerCoords[0] == mobCoords[0]) {
         // User lies at the same y value i.e., on a line perpendicular to the y axis
-        if(userCoords[1] > coords[1]) coords[1] += 1;
-        else coords[1] -= 1;
+        if(playerCoords[1] > mobCoords[1]) mobCoords[1] += mobSpeed * tick;
+        else mobCoords[1] -= mobSpeed * tick;
       }
-      else if(userCoords[1] == coords[1]){
+      else if(playerCoords[1] == mobCoords[1]) {
         // User lies at the same x value i.e., on a line perpendicular to the x axis
-        if(userCoords[0] > coords[0]) coords[0] += 1;
-        else coords[0] -= 1;
+        if(playerCoords[0] > mobCoords[0]) mobCoords[0] += mobSpeed * tick;
+        else mobCoords[0] -= mobSpeed * tick;
       }
 
 
@@ -87,11 +103,11 @@ class KillerPiller{
     }
 
     KillerPiller reset() {
-      coords[0] = defaultCoords[0];
-      coords[1] = defaultCoords[1];
+      mobCoords[0] = defaultCoords[0];
+      mobCoords[1] = defaultCoords[1];
 
-      userCoords[0] = defaultUserCoords[0];
-      userCoords[1] = defaultUserCoords[1];
+      playerCoords[0] = defaultplayerCoords[0];
+      playerCoords[1] = defaultplayerCoords[1];
 
       return *this;
     }

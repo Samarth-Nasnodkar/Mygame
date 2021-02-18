@@ -1,8 +1,8 @@
 Game Game::reset() {
   KillerPiller::reset();
 
-  a[0] = defaultA[0];
-  a[1] = defaultA[1];
+  playerCoords[0] = defaultplayerCoords[0];
+  playerCoords[1] = defaultplayerCoords[1];
 
   asteroids[0] = defaultAsteroids[0];
   asteroids[1] = defaultAsteroids[1];
