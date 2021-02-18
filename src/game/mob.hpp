@@ -41,8 +41,8 @@ class KillerPiller {
 
     KillerPiller mobPathFind(float tick) {
       // Move towards the difference between the player and mob
-      mobCoords[0] += sgn(playerCoords[0] - mobCoords[0]) * mobSpeed * tick;
-      mobCoords[1] += sgn(playerCoords[1] - mobCoords[1]) * mobSpeed * tick;
+      mobCoords[0] += sgn(floor(playerCoords[0]) - floor(mobCoords[0])) * mobSpeed * tick;
+      mobCoords[1] += sgn(floor(playerCoords[1]) - floor(mobCoords[1])) * mobSpeed * tick;
 
       return *this;
     }
