@@ -8,12 +8,12 @@ Game Game::eventLoop() {
     if (milliDiff > 1000 / fps) {
       // frame render
 
-      cout << "Frame rendered" << endl;
+      cout << "Frame tick: " << milliDiff << endl;
       cout << "FPS: " << fps << endl;
       gameTick = milliDiff * tps / 1000.0;
 
       cout << "Game Tick: " << gameTick << endl;
-      cout << "TPS: " << gameTick << endl;
+      cout << "TPS: " << tps << endl;
       gettimeofday(&lastFrameEndTime, NULL);
     }
     else {
