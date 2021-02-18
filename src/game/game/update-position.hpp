@@ -3,26 +3,38 @@ Game Game::updatePosition(char input) {
     // Normal movements.
 
     case 'w':
-      playerCoords[0] -= playerSpeed * gameTickDelta;
-      direction = "f";
+      if(!paused){
+        playerCoords[0] -= playerSpeed * gameTickDelta;
+        direction = "f";
+      }
       break;
     case 's':
-      playerCoords[0] += playerSpeed * gameTickDelta;
-      direction = "b";
+      if(!paused){
+        playerCoords[0] += playerSpeed * gameTickDelta;
+        direction = "b";
+      }
       break;
     case 'd':
-      playerCoords[1] += playerSpeed * gameTickDelta;
-      direction = "r";
+      if(!paused){
+        playerCoords[1] += playerSpeed * gameTickDelta;
+        direction = "r";
+      }
       break;
     case 'a':
-      playerCoords[1] -= playerSpeed * gameTickDelta;
-      direction = "l";
+      if(!paused){
+        playerCoords[1] -= playerSpeed * gameTickDelta;
+        direction = "l";
+      }
       break;
     case 'o':
-      showScore = true;
+      if(!paused) showScore = true;
       break;
     case 'e':
-      if(gunEnable) fired = true;
+      if(gunEnable && !paused) fired = true;
+      break;
+    case 'p':
+      paused = !paused;
+      pausePlay();
       break;
     default:
       break;

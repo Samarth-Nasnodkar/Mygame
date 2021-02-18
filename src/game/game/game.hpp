@@ -39,6 +39,7 @@ class Game: public KillerPiller {
     int starPrint = 0; // The stars should be printed after a regular interval. Thi variable moves between 0 and 5 and prints the star if equal to 0
     bool gunEnable = false; // Tells if the gun is enabled or not.
     bool fired = false; // If the user has fired a bullet or not.
+    bool paused = false;
 
     const int tps = 10;
     const int fps = 60;
@@ -63,4 +64,5 @@ class Game: public KillerPiller {
     Game updatePosition(char input);
     Game frame();
     Game eventLoop();
+    Game pausePlay();
 };

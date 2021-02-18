@@ -6,6 +6,7 @@
 #include "./game/game/update-position.hpp"
 #include "./game/game/event-loop.hpp"
 #include "./game/game/frame.hpp"
+#include "./game/game/game-pause.hpp"
 
 using namespace std;
 
