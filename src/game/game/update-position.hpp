@@ -5,25 +5,25 @@ Game Game::updatePosition(char input) {
     case 'w':
       if(!paused){
         playerCoords[0] -= playerSpeed * gameTickDelta;
-        direction = "f";
+        direction = 'f';
       }
       break;
     case 's':
       if(!paused){
         playerCoords[0] += playerSpeed * gameTickDelta;
-        direction = "b";
+        direction = 'b';
       }
       break;
     case 'd':
       if(!paused){
         playerCoords[1] += playerSpeed * gameTickDelta;
-        direction = "r";
+        direction = 'r';
       }
       break;
     case 'a':
       if(!paused){
         playerCoords[1] -= playerSpeed * gameTickDelta;
-        direction = "l";
+        direction = 'l';
       }
       break;
     case 'o':

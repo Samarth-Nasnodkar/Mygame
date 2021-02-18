@@ -8,74 +8,30 @@ class Gun {
     * Tells if at that specific point, the gun shot animation should be showed or not.
     */
     bool shootable(
-      int currentx,
-      int currenty,
-      int userx,
-      int usery,
-      int enemyx,
-      int enemyy,
-      string direction
+      int x,
+      int y,
+      int playerX,
+      int playerY,
+      int mobX,
+      int mobY,
+      int asteroidX,
+      int asteroidY,
+      char direction
     ) {
       // This function tells if at that specific point, the gun shot animation should be showed or not.
+      // Asteroids and mobs block laser
 
-      if(direction == "f") {
-        // Check the graph in the mob.h file for more intuitive feeling.
+      switch(direction) {
+        case 'b':
+          return (x == playerX) && (y > playerY) && !(mobX == playerX && y >= mobY) && !(asteroidX == playerX && y >= asteroidY);
+        case 'f':
+          return (x == playerX) && (y < playerY) && !(mobX == playerX && y <= mobY) && !(asteroidX == playerX && y <= asteroidY);
+        case 'l':
+          return (y == playerY) && (x < playerX) && !(mobY == playerY && x <= mobX) && !(asteroidY == playerY && x <= asteroidX);
+        default:
+          return (y == playerY) && (x > playerX) && !(mobY == playerY && x >= mobX) && !(asteroidY == playerY && x >= asteroidX);
+      }
 
-        if(enemyy > usery) {
-          if(currenty < usery && currentx == userx) return true;
-          else return false;
-        }
-        else if(enemyx == userx){
-          if(currenty < usery && currenty > enemyy && currentx == userx) return true;
-          else return false;
-        }
-        else{
-          if(currentx == userx && currenty < usery) return true;
-          else return false;
-        }
-      }
-      else if(direction == "b") {
-        if(enemyy < usery) {
-          if(currenty > usery && currentx == userx) return true;
-          else return false;
-        }
-        else if(enemyx == userx){
-          if(currenty > usery && currenty < enemyy && currentx == userx) return true;
-          else return false;
-        }
-        else{
-          if(currentx == userx && currenty > usery) return true;
-          else return false;
-        }
-      }
-      else if(direction == "l") {
-        if(enemyx > userx) {
-          if(currentx < userx && currenty == usery) return true;
-          else return false;
-        }
-        else if(enemyy == usery){
-          if(currentx < userx && currentx > enemyx && currenty == usery) return true;
-          else return false;
-        }
-        else{
-          if(currentx < userx && currenty == usery) return true;
-          else return false;
-        }
-      }
-      else if(direction == "r") {
-        if(enemyx < userx) {
-          if(currentx > userx && currenty == usery) return true;
-          else return false;
-        }
-        else if(enemyy == usery){
-          if(currentx > userx && currentx < enemyx && currenty == usery) return true;
-          else return false;
-        }
-        else{
-          if(currentx > userx && currenty == usery) return true;
-          else return false;
-        }
-      }
       return false;
     }
 };

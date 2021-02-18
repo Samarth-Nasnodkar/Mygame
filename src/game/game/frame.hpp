@@ -38,10 +38,10 @@ Game Game::frame() {
         if(i == floor(playerCoords[0]) && j == floor(playerCoords[1])) {
           // Printing the user character.
 
-          if(direction == "f") cout << ORANGE_NO_FLASH << "^" << NC;
-          else if(direction == "b") cout << ORANGE_NO_FLASH << "v" << NC;
-          else if(direction == "l") cout << ORANGE_NO_FLASH << "<" << NC;
-          else if(direction == "r") cout << ORANGE_NO_FLASH << ">" << NC;
+          if(direction == 'f') cout << ORANGE_NO_FLASH << "^" << NC;
+          else if(direction == 'b') cout << ORANGE_NO_FLASH << "v" << NC;
+          else if(direction == 'l') cout << ORANGE_NO_FLASH << "<" << NC;
+          else if(direction == 'r') cout << ORANGE_NO_FLASH << ">" << NC;
         }
         else if(
           i == asteroids[0] &&
@@ -57,10 +57,12 @@ Game Game::frame() {
           blaster.shootable(
             j,
             i,
-            playerCoords[1],
-            playerCoords[0],
-            mobCoords[1],
-            mobCoords[0],
+            floor(playerCoords[1]),
+            floor(playerCoords[0]),
+            floor(mobCoords[1]),
+            floor(mobCoords[0]),
+            asteroids[1],
+            asteroids[0],
             direction
           ) &&
           boostCounter > 0 &&

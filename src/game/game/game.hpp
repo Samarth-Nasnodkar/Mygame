@@ -23,7 +23,7 @@ class Game: public KillerPiller {
   private:
     Gun blaster; // Declaring the blaster/Gun from shooter.h
 
-    string direction = "f"; // Tells the direction of the user. f == forward , b == backward , l == left , r == right. (Lowercase is important)
+    char direction = 'f'; // Tells the direction of the user. f == forward , b == backward , l == left , r == right. (Lowercase is important)
     bool showScore = false;// Tell if the score should be displayed or not.
     int score = 0; // The score of the user
 
