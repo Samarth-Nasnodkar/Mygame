@@ -10,14 +10,12 @@
 #include "../../util/input.hpp"
 
 const int defaultAsteroids[3] = {-1, -1, 3};
-int defaultDimensions[2] = {23, 80};
+const int defaultDimensions[2] = {23, 80};
 
 class Game: public KillerPiller {
   public:
     Game() {
       this->fetchResolution();
-      dimensions[0] = defaultDimensions[0];
-      dimensions[1] = defaultDimensions[1];
       mobSpeed = 2;
       this->start();
     }
