@@ -42,7 +42,7 @@ class Game: public KillerPiller {
     bool fired = false; // If the user has fired a bullet or not.
 
     const int tps = 10;
-    const int fps = 100;
+    const int fps = 300;
     timeval lastFrameEndTime;
 
     bool gameRunning = false;
@@ -178,7 +178,7 @@ class Game: public KillerPiller {
                 pathfinder();// This algo will find the path for the mob and also move it.
                 alternate = 1;
             }
-            else if(alternate < mobSpeed + 1)
+            else if(alternate < mobSpeed + 30)
             alternate += 1;
             else
             alternate = 0;
