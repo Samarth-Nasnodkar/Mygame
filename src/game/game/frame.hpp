@@ -16,7 +16,7 @@ Game Game::frame() {
   ) {
     asteroids[0] = -1;// the -1 signifies that the asteroid should be despawned.
     asteroids[1] = -1;
-
+    cout<<"\a";
     if(asteroids[2] == 3) { // Checking if the asteroid was a powerup asteroid.
       asteroids[2] = 3;
       boostCounter = 10;
