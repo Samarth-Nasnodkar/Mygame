@@ -1,5 +1,23 @@
 Game Game::frame() {
-  updatePosition(getKeyPress());
+  if(!replay_ongoing){
+    updatePosition(getKeyPress());
+      if(alternate_storage){
+      Node *t = head;
+      Node *temp = new Node;
+      temp->playerx = playerCoords[1];
+      temp->playery = playerCoords[0];
+      temp->mobx = mobCoords[1];
+      temp->moby = mobCoords[0];
+      temp->direction = direction;
+      if (head == NULL)
+        head = temp;
+      else{
+        while(t->next != NULL) t = t->next;
+        t->next = temp;
+      }
+    }
+  }
+  alternate_storage = !alternate_storage;
   system("clear");
 
   bool shotUsed = false;
@@ -9,6 +27,10 @@ Game Game::frame() {
 
   mobCoords[0] = fmin(dimensions[0] - 2, fmax(1, mobCoords[0])); // Bounded
   mobCoords[1] = fmin(dimensions[1] - 2, fmax(1, mobCoords[1])); // Bounded
+
+  if(blaster.killed){
+    KillerPiller::reset(true);
+  }
 
   if(
     floor(playerCoords[0]) == asteroids[0] &&
@@ -67,7 +89,8 @@ Game Game::frame() {
             floor(mobCoords[0]),
             asteroids[1],
             asteroids[0],
-            direction
+            direction,
+            fired
           ) &&
           boostCounter > 0 &&
           fired
@@ -102,7 +125,7 @@ Game Game::frame() {
     // HUD
     cout << "Score: " << ORANGE_UNDER << score << NC << endl;
     cout << "Boost Level: [";
-    for (int i = 0; i < boostCounter; i++) cout << GREEN_NO_UNDER << "#" << NC;
+    for (int i = 0; i < boostCounter; i++) cout << GREEN_NO_FLASH<< "#" << NC;
     for (int i = 0; i < 10 - boostCounter; i++) cout << " ";
     cout << "]" << endl;
   }

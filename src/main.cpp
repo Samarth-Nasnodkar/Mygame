@@ -8,6 +8,7 @@
 #include "./game/game/frame.hpp"
 #include "./game/game/game-pause.hpp"
 #include "./game/game/game-resolution.hpp"
+#include "./game/game/replay.hpp"
 
 using namespace std;
 

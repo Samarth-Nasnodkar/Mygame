@@ -47,12 +47,14 @@ class KillerPiller {
       return *this;
     }
 
-    KillerPiller reset() {
+    KillerPiller reset(bool onlyMob = false) {
       mobCoords[0] = defaultCoords[0];
       mobCoords[1] = defaultCoords[1];
 
-      playerCoords[0] = defaultplayerCoords[0];
-      playerCoords[1] = defaultplayerCoords[1];
+      if (!onlyMob){
+        playerCoords[0] = defaultplayerCoords[0];
+        playerCoords[1] = defaultplayerCoords[1];
+      }
 
       return *this;
     }

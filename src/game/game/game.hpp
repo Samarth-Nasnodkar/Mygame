@@ -8,6 +8,7 @@
 #include "../shooter.hpp"
 #include "../../libs/COLORS!.hpp"
 #include "../../util/input.hpp"
+#include "../../util/List.hpp"
 
 const int defaultAsteroids[3] = {-1, -1, 3};
 const int defaultDimensions[2] = {23, 80};
@@ -15,6 +16,7 @@ const int defaultDimensions[2] = {23, 80};
 class Game: public KillerPiller {
   public:
     Game() {
+      head = NULL;
       this->fetchResolution();
       mobSpeed = 2;
       this->start();
@@ -37,12 +39,14 @@ class Game: public KillerPiller {
     // If power up value is 3, the gun gets equipped to the user.
 
     int dimensions[2]; // Map dimensions
-
+    Node *head; //For the replay. Stores the movement of the player and the mob
     int boostCounter = 0;// The user gets 10 shots using the gun, these shots fired are counted using this var.
     int starPrint = 0; // The stars should be printed after a regular interval. Thi variable moves between 0 and 5 and prints the star if equal to 0
     bool gunEnable = false; // Tells if the gun is enabled or not.
     bool fired = false; // If the user has fired a bullet or not.
     bool paused = false;
+    bool replay_ongoing = false; //To check if the replay is going on.
+    bool alternate_storage = true;
 
     const int tps = 10;
     const int fps = 60;
@@ -69,4 +73,5 @@ class Game: public KillerPiller {
     Game eventLoop();
     Game pausePlay();
     Game fetchResolution();
+    Game replay();
 };

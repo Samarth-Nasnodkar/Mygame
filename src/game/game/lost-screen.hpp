@@ -11,6 +11,7 @@ Game Game::lostScreen() {
   cin >> input;
 
   if (input == 'y' || input == 'Y') this->start();
+  else if (input == 'r') this->replay();
 
   return *this;
 }
